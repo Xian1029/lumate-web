@@ -188,6 +188,14 @@ export async function getContentTree(courseId: string): Promise<ContentNode[]> {
   return request(`/courses/${courseId}/content-tree`);
 }
 
+export async function confirmSourcePage(courseId: string, nodeId: string, jobId: string, page: number): Promise<{ page: number; page_count: number; status: string }> {
+  return request(`/courses/${courseId}/content-tree/${nodeId}/source-page`, {
+    method: "PUT",
+    suppressErrorToast: true,
+    body: JSON.stringify({ job_id: jobId, page }),
+  });
+}
+
 export interface RestructuredNotes {
   original_title: string;
   ai_content: string;
