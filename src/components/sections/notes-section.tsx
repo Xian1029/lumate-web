@@ -1062,7 +1062,7 @@ export function NotesSection({
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-semibold text-foreground">{file.filename || file.file_name || t("notes.originalPdf")}</span>
-                      <span className="mt-1 block text-xs text-muted-foreground">{t("notes.sourceFileHint")}</span>
+                      <span className="mt-1 block text-xs text-muted-foreground">{selectedLearnableNode?.source_file === (file.filename || file.file_name) && (file.filename || file.file_name || "").toLowerCase().endsWith(".pdf") ? (selectedLearnableNode.metadata?.source_pages?.[0] ? `定位到第 ${selectedLearnableNode.metadata.source_pages[0]} 页` : "暂未定位本节页码，将从文件首页打开") : t("notes.sourceFileHint")}</span>
                     </span>
                     <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition group-hover:bg-emerald-700">
                       {t("notes.openOriginal")}
